@@ -14,6 +14,13 @@ RSpec.describe Blacklist do
 
   it "excludes empties" do
     expect(Blacklist.oclcs.include? "").to be false
+    expect(Blacklist.oclcs.include? 0).to be false
+  end
+
+  it "has a list of only integers" do
+    Blacklist.oclcs.each do | o |
+      expect(o).to be_an(Integer)
+    end
   end
 end
 
