@@ -13,7 +13,7 @@ module Blacklist
   Dotenv.load!
   OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
   APPLICATION_NAME = 'Registry Blacklist'
-  CREDENTIALS_PATH = File.dirname(__FILE__)+ENV['CREDENTIALS_PATH']
+  CREDENTIALS_PATH = ENV['CREDENTIALS_PATH']
   SCOPE = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
 
   def Blacklist.blacklist_sheet_id

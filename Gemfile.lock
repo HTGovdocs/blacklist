@@ -1,3 +1,10 @@
+PATH
+  remote: .
+  specs:
+    blacklist (0.1)
+      dotenv
+      google-api-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,6 +46,7 @@ GEM
     multipart-post (2.0.0)
     os (0.9.6)
     public_suffix (2.0.4)
+    rake (10.4.2)
     representable (2.3.0)
       uber (~> 0.0.7)
     retriable (2.1.0)
@@ -66,8 +74,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blacklist!
+  bundler (~> 1.7)
   dotenv
   google-api-client
+  rake (~> 10.0)
   rspec
 
 BUNDLED WITH
