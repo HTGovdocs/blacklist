@@ -65,7 +65,7 @@ module Blacklist
     end
   end
 
-  self.oclcs = Blacklist.get_deprecated_oclcs.each {|o| o.sub(/^0+/,'')}.reject {|o| o.empty?}.to_set
+  self.oclcs = Blacklist.get_deprecated_oclcs.each {|o| o.sub(/^0+/,'')}.reject {|o| o.empty?}.each{|o| o.to_i}.to_set
   
 end
 
