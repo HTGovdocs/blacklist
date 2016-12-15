@@ -1,0 +1,8 @@
+.env
+.rspec
+.bundle
+*.tmp
+
+.client_secret.json
+.credentials
+
