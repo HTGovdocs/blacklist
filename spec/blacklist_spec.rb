@@ -1,26 +1,25 @@
-require 'blacklist'
+require 'oclc_filter/whitelist'
 require 'dotenv'
 
 Dotenv.load
 
-RSpec.describe Blacklist do
+RSpec.describe Whitelist do
   it "has the remote resource" do
-    expect(Blacklist.blacklist_sheet_id).to be_truthy
+    expect(Whitelist.sheet_id).to be_truthy
   end
 
-  it "has a list of blacklisted oclcs" do
-    expect(Blacklist.oclcs.count).to be > 10 
+  it "has a list of whitelisted oclcs" do
+    expect(Whitelist.oclcs.count).to be > 0 
   end
 
   it "excludes empties" do
-    expect(Blacklist.oclcs.include? "").to be false
-    expect(Blacklist.oclcs.include? 0).to be false
+    expect(Whitelist.oclcs.include? "").to be false
+    expect(Whitelist.oclcs.include? 0).to be false
   end
 
   it "has a list of only integers" do
-    Blacklist.oclcs.each do | o |
+    Whitelist.oclcs.each do | o |
       expect(o).to be_an(Integer)
     end
   end
 end
-

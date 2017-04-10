@@ -1,14 +1,14 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'blacklist/version'
+require 'oclc_filter/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "blacklist"
-  spec.version       = Blacklist::VERSION
+  spec.name          = "oclc_filter"
+  spec.version       = OclcFilter::VERSION
   spec.authors       = ["Josh Steverman"]
   spec.email         = ["jstever@umich.edu"]
-  spec.summary       = %q{Retrieval of list of bad OCLCs.}
+  spec.summary       = %q{Retrieval of list of bad/good OCLCs.}
   spec.description   = %q{}
   spec.homepage      = ""
   spec.license       = "MIT"

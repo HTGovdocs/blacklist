@@ -7,8 +7,8 @@ require 'googleauth/stores/file_token_store'
 require 'fileutils'
 require 'set'
 
-module Blacklist
-  class << self; attr_accessor :oclcs; end
+class Gsheet
+  attr_accessor :oclcs
 
   Dotenv.load!
   OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
@@ -16,18 +16,16 @@ module Blacklist
   CREDENTIALS_PATH = ENV['CREDENTIALS_PATH']
   SCOPE = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
 
-  def Blacklist.blacklist_sheet_id
-    ENV['BLACKLIST_SHEET_ID']
+  def self.sheet_id
   end
 
-  
   ##
   # Ensure valid credentials, either by restoring from the saved credentials
   # files or intitiating an OAuth2 authorization. If authorization is required,
   # the user's default browser will be launched to approve the request.
   #
   # @return [Google::Auth::UserRefreshCredentials] OAuth2 credentials
-  def Blacklist.authorize
+  def Gsheet.authorize
     FileUtils.mkdir_p(File.dirname(CREDENTIALS_PATH))
 
     client_id = Google::Auth::ClientId.from_file(ENV['CLIENT_SECRETS_PATH'])
@@ -49,23 +47,19 @@ module Blacklist
     credentials
   end
 
-
-  def Blacklist.get_deprecated_oclcs
-    # Initialize the API
+  def Gsheet.get_data 
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = APPLICATION_NAME
     service.authorization = authorize
 
     range = 'Sheet1!A1:A'
-    response = service.get_spreadsheet_values(ENV['BLACKLIST_SHEET_ID'], range)
-    if response.values.empty?
-      raise "Could not find OCLCs to deprecate"
+    response = service.get_spreadsheet_values(self.sheet_id, range)
+    if response.values.nil? or response.values.empty?
+      raise "Could not find any data"
     else
       response.values.flatten
     end
   end
 
-  self.oclcs = Blacklist.get_deprecated_oclcs.each {|o| o.sub(/^0+/,'')}.reject {|o| o.empty?}.map(&:to_i).to_set
-  
 end
 
