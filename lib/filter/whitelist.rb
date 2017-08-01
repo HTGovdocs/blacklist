@@ -1,4 +1,4 @@
-require 'oclc_filter/gsheet'
+require 'filter/gsheet'
 
 class Whitelist < Gsheet
   class << self; attr_accessor :oclcs; end

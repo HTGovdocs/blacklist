@@ -1,4 +1,4 @@
-require 'oclc_filter/gsheet'
+require 'filter/gsheet'
 require 'dotenv'
 require 'pp'
 
