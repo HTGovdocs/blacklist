@@ -7,7 +7,7 @@ class AuthorityList < Gsheet
     ENV['AUTHORITYLIST_SHEET_ID']
   end
 
-  self.lccns = self.get_data.each {|l| l.gsub(/ /,'')}.reject {|l| l.empty?}.to_set
+  self.lccns = self.get_data("All Authorities").each {|l| l.gsub(/ /,'')}.reject {|l| l.empty?}.to_set
   
 end
 

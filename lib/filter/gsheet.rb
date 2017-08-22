@@ -47,12 +47,12 @@ class Gsheet
     credentials
   end
 
-  def Gsheet.get_data 
+  def Gsheet.get_data sheet_name="Sheet1"
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = APPLICATION_NAME
     service.authorization = authorize
 
-    range = 'Sheet1!A1:A'
+    range = "#{sheet_name}!A1:A"
     response = service.get_spreadsheet_values(self.sheet_id, range)
     if response.values.nil? or response.values.empty?
       raise "Could not find any data"
