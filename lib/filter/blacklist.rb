@@ -7,7 +7,5 @@ class Blacklist < Gsheet
     ENV['BLACKLIST_SHEET_ID']
   end
 
-  self.oclcs = self.get_data.each {|o| o.sub(/^0+/,'')}.reject {|o| o.empty?}.map(&:to_i).to_set
-  
+  self.oclcs = get_data.each { |o| o.sub(/^0+/, '') }.reject(&:empty?).map(&:to_i).to_set
 end
-
