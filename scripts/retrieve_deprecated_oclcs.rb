@@ -1,3 +1,3 @@
 require 'filter/blacklist'
-
-Blacklist.oclcs.each { |o| puts o }
+list = File.open(ARGV.shift, 'w')
+Blacklist.oclcs.each { |o| list.puts o }
