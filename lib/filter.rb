@@ -18,11 +18,17 @@ module Filter
       return false if Blacklist.oclcs.include? o
     end
 
-    u_and_f? ||
+    # accept
+    (
+      u_and_f? ||
       sudocs&.any? ||
       gpo_item_numbers&.any? ||
       approved_author? ||
-      approved_added_entry?
+      approved_added_entry? ) &&
+    # reject
+      !reject_because_of_field? &&
+      !reject_source_record?
+
   end
 
   @@rejected_source_records = YAML.load_file(
