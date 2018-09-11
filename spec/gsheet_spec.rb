@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'filter/gsheet'
 require 'dotenv'
 require 'pp'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # reworked quickstart for GOOGLE API from here:
 # https://developers.google.com/sheets/quickstart/ruby
 require 'dotenv'

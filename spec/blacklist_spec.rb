@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'filter/blacklist'
 require 'dotenv'
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'filter/authority_list'
 require 'dotenv'
 

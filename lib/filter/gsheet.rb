@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # reworked quickstart for GOOGLE API from here:
 # https://developers.google.com/sheets/quickstart/ruby
 require 'dotenv'
@@ -11,8 +13,8 @@ class Gsheet
   attr_accessor :oclcs
 
   Dotenv.load!
-  OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
-  APPLICATION_NAME = 'Registry Blacklist'.freeze
+  OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
+  APPLICATION_NAME = 'Registry Blacklist'
   CREDENTIALS_PATH = ENV['CREDENTIALS_PATH']
   SCOPE = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
 
