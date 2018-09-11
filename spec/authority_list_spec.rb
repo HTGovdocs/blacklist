@@ -17,7 +17,7 @@ RSpec.describe AuthorityList do
     expect(AuthorityList.lccns.include?(0)).to be false
   end
 
-  it 'has a list of only integers' do
+  it 'has a list of only uris' do
     AuthorityList.lccns.each do |lccn|
       expect(lccn).to match(/^http/)
     end
