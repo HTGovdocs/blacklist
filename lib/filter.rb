@@ -25,12 +25,18 @@ module Filter
       approved_added_entry?
   end
 
-  @@rejected_source_records = YAML.load_file('config/rejected_source_records.yml')
+  @@rejected_source_records = YAML.load_file(
+    File.join(File.dirname(__FILE__),
+              '../config/rejected_source_records.yml')
+  )
   def reject_source_record?
     @@rejected_source_records[org_code]&.include? local_id
   end
 
-  @@rejected_fields = YAML.load_file('config/rejected_fields.yml')
+  @@rejected_fields = YAML.load_file(
+    File.join(File.dirname(__FILE__),
+              '../config/rejected_fields.yml')
+  )
   def reject_because_of_field?
     @@rejected_fields.each do |field, values|
       values.each do |value|
