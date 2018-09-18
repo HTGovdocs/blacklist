@@ -1,2 +1,4 @@
 AllCops:
   TargetRubyVersion: 2.5.1
+  Exclude:
+    - 'spec/spec_helper.rb'

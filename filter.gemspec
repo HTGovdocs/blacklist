@@ -10,7 +10,8 @@ Gem::Specification.new do |spec|
   spec.version       = Filter::VERSION
   spec.authors       = ['Josh Steverman']
   spec.email         = ['jstever@umich.edu']
-  spec.summary       = 'Retrieval of list of bad/good OCLCs and good Authorities.'
+  spec.summary       = 'Retrieval of list of bad/good OCLCs, good Authorities,
+and rejected features.'
   spec.description   = ''
   spec.homepage      = ''
   spec.license       = 'MIT'

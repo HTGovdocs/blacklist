@@ -9,7 +9,8 @@ end
 
 RSpec.describe Filter, '#reject_because_of_field?' do
   it 'truthy if it has a bad field' do
-    record = RecordStub.new('author_lccns' => ['https://lccn.loc.gov/n50076615'])
+    record = RecordStub.new('author_lccns' =>
+                            ['https://lccn.loc.gov/n50076615'])
     expect(record.reject_because_of_field?).to be_truthy
   end
 

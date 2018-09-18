@@ -58,10 +58,8 @@ class Gsheet
 
     range = "#{sheet_name}!A1:A"
     response = service.get_spreadsheet_values(sheet_id, range)
-    if response.values.nil? || response.values.empty?
-      raise 'Could not find any data'
-    else
-      response.values.flatten
-    end
+    raise 'Could not find any data' if response.values.nil? ||
+                                       response.values.empty?
+    response.values.flatten
   end
 end

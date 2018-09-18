@@ -31,7 +31,8 @@ RSpec.describe Filter, '#rejected?' do
   end
 
   it 'returns true if it has a bad field' do
-    record = RecordStub.new('author_lccns' => ['https://lccn.loc.gov/n50076615'])
+    record = RecordStub.new('author_lccns' =>
+                            ['https://lccn.loc.gov/n50076615'])
     expect(record.rejected?).to be_truthy
   end
 
