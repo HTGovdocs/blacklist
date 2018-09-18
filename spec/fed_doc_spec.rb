@@ -23,3 +23,20 @@ RSpec.describe Filter, '#fed_doc?' do
     expect(record.fed_doc?).to be_falsey
   end
 end
+
+RSpec.describe Filter, '#rejected?' do
+  it 'returns true if OCN is in blacklist' do
+    record = RecordStub.new('oclc_resolved' => [1_454_588])
+    expect(record.rejected?).to be_truthy
+  end
+
+  it 'returns true if it has a bad field' do
+    record = RecordStub.new('author_lccns' => ['https://lccn.loc.gov/n50076615'])
+    expect(record.rejected?).to be_truthy
+  end
+
+  it 'returns true if it is a bad source record' do
+    record = RecordStub.new('org_code' => 'miaahdl', 'local_id' => '010085562')
+    expect(record.rejected?).to be_truthy
+  end
+end

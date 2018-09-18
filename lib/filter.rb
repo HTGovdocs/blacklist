@@ -12,23 +12,23 @@ module Filter
   def fed_doc?(m = nil)
     @marc = m unless m.nil?
 
-    # check the blacklist
-    oclc_resolved&.each do |o|
-      return true if Whitelist.oclcs.include? o
-      return false if Blacklist.oclcs.include? o
-    end
-
     # accept
     (
       u_and_f? ||
       sudocs&.any? ||
       gpo_item_numbers&.any? ||
       approved_author? ||
-      approved_added_entry? ) &&
-    # reject
-      !reject_because_of_field? &&
-      !reject_source_record?
+      approved_added_entry? ||
+      oclc_resolved&.any? {|o| Whitelist.oclcs.include? o }
+    ) &&
+    !rejected?
 
+  end
+
+  def rejected?
+    oclc_resolved&.any? {|o| Blacklist.oclcs.include? o } || 
+    reject_source_record? ||
+    reject_because_of_field?
   end
 
   @@rejected_source_records = YAML.load_file(

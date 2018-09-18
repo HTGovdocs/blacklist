@@ -6,5 +6,6 @@ gem 'dotenv'
 gem 'google-api-client', '0.11.2'
 gem 'rspec'
 gem 'rubocop'
+gem 'simplecov', require: false, group: :test
 
 gemspec
