@@ -9,6 +9,7 @@ module Filter
   class << self
     attr_accessor :rejected_source_records
     attr_accessor :rejected_fields
+    attr_accessor :accepted_fields
   end
 
   # Determine if this is a feddoc based on 008 and 086 and 074
@@ -24,9 +25,23 @@ module Filter
       gpo_item_numbers&.any? ||
       approved_author? ||
       approved_added_entry? ||
-      oclc_resolved&.any? { |o| Whitelist.oclcs.include? o }
+      oclc_resolved&.any? { |o| Whitelist.oclcs.include? o } ||
+      accept_because_of_field?
     ) &&
       !rejected?
+  end
+
+  @accepted_fields = YAML.load_file(
+    File.join(File.dirname(__FILE__),
+              '../config/accepted_fields.yml')
+  )
+  def accept_because_of_field?
+    Filter.accepted_fields.each do |field, values|
+      values.each do |value|
+        return value if ([public_send(field)].flatten & [value].flatten).any?
+      end
+    end
+    false
   end
 
   def rejected?

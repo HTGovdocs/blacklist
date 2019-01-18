@@ -60,6 +60,7 @@ class Gsheet
     response = service.get_spreadsheet_values(sheet_id, range)
     raise 'Could not find any data' if response.values.nil? ||
                                        response.values.empty?
+
     response.values.flatten
   end
 end

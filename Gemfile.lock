@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    filter (0.3.3)
+    filter (0.4.0)
       dotenv
       google-api-client (= 0.11.2)
 
@@ -104,4 +104,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   1.16.1
+   1.17.1
