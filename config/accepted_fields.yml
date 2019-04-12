@@ -1,4 +1,4 @@
-publisher_headings:
+publisher:
   - 'U.S. G.P.O., '
   - 'Government Printing Office,'
   - 'For sale by the Supt. of Docs., U.S. Govt. Print. Off.,'
@@ -81,3 +81,5 @@ publisher_headings:
   - 'Dept. of Housing and Urban Development, Federal Insurance Administration,'
   - 'Historical Records Survey,'
   - 'Transportation Research Board, National Research Council,'
+  - 'Atomic Energy Commission,'
+  - 'Federal Security Agency, Office of Education,'

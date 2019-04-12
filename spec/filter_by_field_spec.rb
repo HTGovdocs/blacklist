@@ -21,8 +21,8 @@ RSpec.describe Filter, '#reject_because_of_field?' do
 end
 
 RSpec.describe Filter, '#accept_because_of_field?' do
-  it 'has a marked publisher_heading' do
-    record = RecordStub.new('publisher_headings' =>
+  it 'has a marked publisher' do
+    record = RecordStub.new('publisher' =>
                             ['Government Printing Office,'])
     expect(record.u_and_f?).to be_falsey
     expect(record.fed_doc?).to be_truthy
