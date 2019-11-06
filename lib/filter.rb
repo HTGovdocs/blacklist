@@ -37,9 +37,8 @@ module Filter
   )
   def accept_because_of_field?
     Filter.accepted_fields.each do |field, values|
-      values.each do |value|
-        return value if ([public_send(field)].flatten & [value].flatten).any?
-      end
+      found = remove_non_word_chars(public_send(field)) & remove_non_word_chars(values)
+      return found if found.any?
     end
     false
   end
@@ -64,10 +63,15 @@ module Filter
   )
   def reject_because_of_field?
     Filter.rejected_fields.each do |field, values|
-      values.each do |value|
-        return value if ([public_send(field)].flatten & [value].flatten).any?
-      end
+      found = remove_non_word_chars(public_send(field)) & remove_non_word_chars(values)
+      return found if found.any?
     end
     false
+  end
+
+  def remove_non_word_chars(field_values)
+    [(field_values || '')].flatten.map do |v|
+      v.downcase.gsub(/[^[[:word:]]]/, '')
+    end.reject(&:empty?)
   end
 end
