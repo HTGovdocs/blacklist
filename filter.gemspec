@@ -20,7 +20,7 @@ and rejected features.'
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_dependency 'dotenv'
   spec.add_dependency 'google-api-client', '0.11.2'
 end
