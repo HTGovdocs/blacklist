@@ -1,5 +1,7 @@
-Retrieves a list of blacklisted OCLCS from a Google sheet, using the v4 Google api. 
+Maintains a list of rejected OCLCS.
 
-Retrieves a list of whitelisted OCLCS from a Google sheet, using the v4 Google api. 
+Maintains a list of approved OCLCS. 
 
-Retrieves a list of approved authorities from a Google sheet, using the v4 Google api. 
+Maintains a list of approved authorities. 
+
+This was previously retrieving data from Google sheets. This support has been removed, and is now using flatfiles in `data/`
