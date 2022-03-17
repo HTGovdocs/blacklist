@@ -18,4 +18,8 @@ RSpec.describe AuthorityList do
       expect(lccn).to match(/^http/)
     end
   end
+
+  it "has a particular uri" do
+    expect(AuthorityList.lccns).to include("https://lccn.loc.gov/n79045547")
+  end
 end
