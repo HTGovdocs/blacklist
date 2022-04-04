@@ -5,4 +5,5 @@ export PATH="$HOME/bin:$PATH"
 D=$(date +\%Y-\%m-\%d)
 cp data/rejected_oclc_nums.txt /htdata/govdocs/feddocs_oclc_filter/oclcs_removed_from_registry_$D.txt
 
-git commit data/oclcs_removed_from_registry.txt -m 'OCLC update' --author="Josh Steverman <jstever@umich.edu>"
+# This is now done manually, by adding to data/rejected_oclc_nums.txt
+#git commit data/oclcs_removed_from_registry.txt -m 'OCLC update' --author="Josh Steverman <jstever@umich.edu>"
